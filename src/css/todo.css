@@ -4,3 +4,73 @@
     font-size: 16px;
     box-sizing: border-box;
 }
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+button {
+    border: none;
+}
+
+button,
+label {
+    font-weight: bold;
+}
+
+.todos {
+    background: #280828;
+}
+
+.menu {
+    background: mistyrose;
+
+    display: grid;
+    place-items: center;
+}
+
+.todo_inputs {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+
+    background: rgb(202, 150, 202);
+    padding: 15px;
+}
+
+.input_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.input_container textarea {
+    resize: none;
+}
+
+.priority {
+    justify-content: flex-end;
+}
+
+.priority button {
+    background: aqua;
+    border-radius: 20px;
+
+    padding: 10px 30px;
+}
+
+.submit_btn {
+    margin: 15px auto 0 auto;
+}
+
+.submit_btn button {
+    padding: 5px 15px;
+    border-radius: 10px;
+
+    background: lightblue;
+}

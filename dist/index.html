@@ -8,5 +8,39 @@
         <title>Todo List</title>
     </head>
 
-    <body></body>
+    <body>
+        <section class="todos"></section>
+        <section class="menu">
+            <form action="" class="todo_inputs">
+                <div class="input_container">
+                    <label for="todo_title">Title</label>
+                    <input type="text" name="title" id="todo_title" />
+                </div>
+
+                <div class="input_container">
+                    <label for="todo_description">Description</label>
+                    <textarea
+                        name="description"
+                        id="todo_description"
+                        rows="2"
+                        cols="15"
+                        maxlength="30"
+                    ></textarea>
+                </div>
+
+                <div class="input_container">
+                    <label for="todo_due">Due date</label>
+                    <input type="date" name="due_date" id="todo_due" />
+                </div>
+
+                <div class="input_container priority">
+                    <button>Priority</button>
+                </div>
+
+                <div class="submit_btn">
+                    <button>Add todo</button>
+                </div>
+            </form>
+        </section>
+    </body>
 </html>
