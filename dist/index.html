@@ -11,6 +11,10 @@
     <body>
         <section class="todos"></section>
         <section class="menu">
+            <button data_open_modal>Open modal</button>
+        </section>
+
+        <div id="modal_add_book">
             <form action="" class="todo_inputs">
                 <div class="input_container">
                     <label for="todo_title">Title</label>
@@ -34,13 +38,14 @@
                 </div>
 
                 <div class="input_container priority">
-                    <button>Priority</button>
+                    <button type="button">Priority</button>
                 </div>
 
                 <div class="submit_btn">
-                    <button>Add todo</button>
+                    <button type="button">Add todo</button>
                 </div>
             </form>
-        </section>
+        </div>
+        <div id="overlay"></div>
     </body>
 </html>

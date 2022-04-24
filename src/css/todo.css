@@ -22,6 +22,38 @@ label {
     font-weight: bold;
 }
 
+#modal_add_book {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+
+    z-index: 10;
+}
+
+#modal_add_book.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    opacity: 0;
+    position: fixed;
+    transition: 200ms ease-in-out;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgb(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+#overlay.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
 .todos {
     background: #280828;
 }
@@ -37,9 +69,11 @@ label {
     display: flex;
     flex-flow: column wrap;
     gap: 10px;
+    width: 60vw;
 
     background: rgb(202, 150, 202);
     padding: 15px;
+    border-radius: 15px;
 }
 
 .input_container {
