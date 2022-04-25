@@ -10,17 +10,22 @@ body {
     height: 100vh;
 
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 3fr;
+
+    overflow: auto;
 }
 
 button {
     border: none;
+    cursor: pointer;
 }
 
 button,
 label {
     font-weight: bold;
 }
+
+/* modal and overlay start */
 
 #modal_add_book {
     position: fixed;
@@ -54,20 +59,23 @@ label {
     opacity: 1;
 }
 
-.todos {
-    background: #280828;
-}
+/* modal and overlay end */
 
 .menu {
     background: mistyrose;
+
+    position: sticky;
+    top: 0;
 
     display: grid;
     place-items: center;
 }
 
+/* add todo form start */
+
 .todo_inputs {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     gap: 10px;
     width: 60vw;
 
@@ -94,6 +102,7 @@ label {
 .priority button {
     background: aqua;
     border-radius: 20px;
+    cursor: default;
 
     padding: 10px 30px;
 }
@@ -108,3 +117,43 @@ label {
 
     background: lightblue;
 }
+
+/* add todo form end */
+
+/* todos container and items start */
+
+.todos {
+    background: #280828;
+    padding: 20px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+
+    overflow: auto;
+}
+
+.todo {
+    color: mistyrose;
+    background: rebeccapurple;
+    padding: 5px 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo > .title {
+    font-size: 1.3rem;
+    user-select: none;
+}
+
+.todo .remove_todo {
+    padding: 0 5px;
+    background: none;
+    user-select: none;
+
+    font-size: 1.5rem;
+}
+
+/* todos container and items end */

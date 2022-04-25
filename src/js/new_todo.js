@@ -1,3 +1,5 @@
+import { Helpers } from "./helpers";
+
 let projects = [
     {
         name: "proj1",
