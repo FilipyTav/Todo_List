@@ -1,6 +1,11 @@
 const Helpers = (function () {
     const add_to_DOM = function (parent, child, placement) {
-        if (!(placement === "first" || placement === "last")) return;
+        if (
+            !(placement === "first" || placement === "last") ||
+            !parent ||
+            !child
+        )
+            return;
 
         if (placement === "first") {
             parent.prepend(child);
@@ -10,12 +15,16 @@ const Helpers = (function () {
     };
 
     const purge_all_children = function (parent) {
+        if (!parent) return;
+
         while (parent.lastChild) {
             parent.removeChild(parent.lastChild);
         }
     };
 
     const create_DOM = function (type, ...classes) {
+        if (!type) return;
+
         const element = document.createElement(type);
 
         if (classes) {
@@ -28,14 +37,16 @@ const Helpers = (function () {
         return element;
     };
 
-    const create_todo = function (text) {
+    const create_todo = function (name) {
+        if (!name) return;
+
         const all_todos = document.querySelector(".todos");
 
         const todo = Helpers.create_DOM("div", "todo");
         Helpers.add_to_DOM(all_todos, todo, "last");
 
         const title = Helpers.create_DOM("div", "title");
-        title.textContent = `${text}`;
+        title.textContent = `${name}`;
         Helpers.add_to_DOM(todo, title, "first");
 
         const options = Helpers.create_DOM("div", "options");
@@ -46,11 +57,23 @@ const Helpers = (function () {
         Helpers.add_to_DOM(options, rmv_btn, "last");
     };
 
+    const create_project = function (title, id) {
+        if (!title) return;
+
+        const projects = document.querySelector(".projects");
+
+        const project = create_DOM("button", "project");
+        project.textContent = `${title}`;
+        project.setAttribute("data_id", `${id}`);
+        add_to_DOM(projects, project, "last");
+    };
+
     return {
         add_to_DOM,
         purge_all_children,
         create_DOM,
         create_todo,
+        create_project,
     };
 })();
 

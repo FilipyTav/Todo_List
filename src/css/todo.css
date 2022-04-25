@@ -61,16 +61,6 @@ label {
 
 /* modal and overlay end */
 
-.menu {
-    background: mistyrose;
-
-    position: sticky;
-    top: 0;
-
-    display: grid;
-    place-items: center;
-}
-
 /* add todo form start */
 
 .todo_inputs {
@@ -157,3 +147,40 @@ label {
 }
 
 /* todos container and items end */
+
+/* menu start */
+
+.menu {
+    background: mistyrose;
+    padding: 20px;
+
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.projects {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.project {
+    background: rgb(247, 217, 247);
+    width: 100%;
+    padding: 10px 30px;
+    border-top: 1px solid purple;
+
+    font-size: 1.5rem;
+    font-weight: normal;
+    cursor: default;
+}
+
+.projects .project:last-child {
+    border-bottom: 1px solid purple;
+}
+
+/* menu end */

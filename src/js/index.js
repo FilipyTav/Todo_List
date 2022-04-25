@@ -10,6 +10,9 @@ const init = (function () {
     for (let i = 0; i < 5; i++) {
         Helpers.create_todo("Finally");
     }
+
+    Helpers.create_project("Project1", 1);
+    Helpers.create_project("Project2", 2);
 })();
 
 let a = Todo("a", "proj1");
