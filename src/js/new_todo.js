@@ -30,7 +30,12 @@ const Todo = function (title, description, due_date, priority) {
 
     ////
 
-    return Object.assign(Object.create(prototype), { title });
+    return Object.assign(Object.create(prototype), {
+        title,
+        description,
+        due_date,
+        priority,
+    });
 };
 
 export { Todo, projects };

@@ -42,13 +42,6 @@ const Helpers = (function () {
     const create_project = function (title, id) {
         if (!title) return;
 
-        const projs = document.querySelector(".projects");
-
-        const proj = create_DOM("button", "project");
-        proj.textContent = `${title}`;
-        proj.setAttribute("data_id", `${id}`);
-        add_to_DOM(projs, proj, "last");
-
         const project = (function () {
             return {
                 name: title,

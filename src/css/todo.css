@@ -133,6 +133,10 @@ label {
     align-items: center;
 }
 
+.todo:hover {
+    background: rgb(153, 109, 197);
+}
+
 .todo > .title {
     font-size: 1.3rem;
     user-select: none;
