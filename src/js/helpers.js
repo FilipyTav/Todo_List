@@ -1,3 +1,5 @@
+import { Todo, projects } from "./new_todo";
+
 const Helpers = (function () {
     const add_to_DOM = function (parent, child, placement) {
         if (
@@ -37,6 +39,26 @@ const Helpers = (function () {
         return element;
     };
 
+    const create_project = function (title, id) {
+        if (!title) return;
+
+        const projs = document.querySelector(".projects");
+
+        const proj = create_DOM("button", "project");
+        proj.textContent = `${title}`;
+        proj.setAttribute("data_id", `${id}`);
+        add_to_DOM(projs, proj, "last");
+
+        const project = (function () {
+            return {
+                name: title,
+                todos: [],
+            };
+        })();
+
+        projects.push(project);
+    };
+
     const create_todo = function (name) {
         if (!name) return;
 
@@ -55,17 +77,6 @@ const Helpers = (function () {
         const rmv_btn = Helpers.create_DOM("button", "remove_todo");
         rmv_btn.innerHTML = "&times;";
         Helpers.add_to_DOM(options, rmv_btn, "last");
-    };
-
-    const create_project = function (title, id) {
-        if (!title) return;
-
-        const projects = document.querySelector(".projects");
-
-        const project = create_DOM("button", "project");
-        project.textContent = `${title}`;
-        project.setAttribute("data_id", `${id}`);
-        add_to_DOM(projects, project, "last");
     };
 
     return {

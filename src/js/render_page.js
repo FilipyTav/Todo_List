@@ -1,10 +1,14 @@
+import { Helpers } from "./helpers";
 import { projects } from "./new_todo";
 
 const render_page = function () {
+    const todos = document.querySelector(".todos");
+
+    Helpers.purge_all_children(todos);
+
     projects.forEach((project) => {
-        console.log(project.todos);
         project.todos.forEach((todo) => {
-            console.log(todo);
+            Helpers.create_todo(todo.title);
         });
     });
 };

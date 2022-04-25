@@ -179,6 +179,10 @@ label {
     cursor: default;
 }
 
+.project:hover {
+    background: rgb(240, 193, 240);
+}
+
 .projects .project:last-child {
     border-bottom: 1px solid purple;
 }

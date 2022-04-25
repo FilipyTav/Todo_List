@@ -7,21 +7,15 @@ import { Helpers } from "./helpers";
 const init = (function () {
     manage_modal();
 
-    for (let i = 0; i < 5; i++) {
-        Helpers.create_todo("Finally");
-    }
-
     Helpers.create_project("Project1", 1);
     Helpers.create_project("Project2", 2);
 })();
 
-let a = Todo("a", "proj1");
-a.add_todo();
-console.log(a);
+let a = Todo("a");
+a.add_to("Project1");
 
-let b = Todo("b", "proj2");
-b.add_todo();
-console.log(b);
+let b = Todo("b");
+b.add_to("Project2");
 
 console.log(projects);
 render_page();
