@@ -90,7 +90,8 @@ label {
 }
 
 .priority button {
-    background: aqua;
+    width: 15%;
+    text-align: center;
     border-radius: 20px;
     cursor: default;
 

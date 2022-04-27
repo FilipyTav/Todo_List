@@ -38,10 +38,51 @@ const manage_form = function () {
 
     const submit_btn = document.querySelector(".submit_btn button");
 
+    const create_priority = function (level, color) {
+        return {
+            level,
+            color,
+        };
+    };
+
+    const priorities = [
+        create_priority("Low", "#34ff34;"),
+        create_priority("Medium", "#ffff41"),
+        create_priority("High", "#ff3737"),
+    ];
+
+    const priority_btn = document.querySelector("#priority_btn");
+
+    priority_btn.textContent = priorities[0].level;
+    priority_btn.setAttribute("style", `background: ${priorities[0].color}`);
+
+    priority_btn.addEventListener("click", () => {
+        for (let i = 0; i < priorities.length; i++) {
+            if (priority_btn.textContent === priorities[i].level) {
+                if (i === priorities.length - 1) {
+                    priority_btn.textContent = priorities[0].level;
+                    priority_btn.setAttribute(
+                        "style",
+                        `background: ${priorities[0].color}`
+                    );
+                    break;
+                }
+
+                priority_btn.textContent = priorities[i + 1].level;
+                priority_btn.setAttribute(
+                    "style",
+                    `background: ${priorities[i + 1].color}`
+                );
+                break;
+            }
+        }
+    });
+
     submit_btn.addEventListener("click", (e) => {
         e.preventDefault();
 
         const data = new FormData(form);
+
         const today = Helpers.Current_date.full_date();
 
         const title = data.get("title").trim();
@@ -52,12 +93,20 @@ const manage_form = function () {
         }
 
         const description = data.get("description").trim();
-        console.log(description);
+
         let due_date = data.get("due_date");
         due_date = parseISO(due_date);
 
         if (isBefore(due_date, today) && !isToday(due_date)) {
             alert("Due date must not have passed");
+            return;
+        }
+
+        const priority = priority_btn.textContent;
+
+        if (!priority) {
+            alert("Invalid priority");
+            return;
         }
     });
 };
