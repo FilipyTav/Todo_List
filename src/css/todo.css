@@ -63,7 +63,7 @@ label {
 
 /* add todo form start */
 
-.todo_inputs {
+#todo_inputs {
     display: flex;
     flex-flow: column nowrap;
     gap: 10px;
@@ -155,7 +155,7 @@ label {
 /* menu start */
 
 .menu {
-    background: mistyrose;
+    background: rgb(204, 125, 228);
     padding: 20px;
 
     position: sticky;
@@ -189,6 +189,19 @@ label {
 
 .projects .project:last-child {
     border-bottom: 1px solid purple;
+}
+
+.new_todo_btn {
+    display: grid;
+    place-items: center;
+}
+
+.new_todo_btn button {
+    color: white;
+    background: purple;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 15px;
 }
 
 /* menu end */

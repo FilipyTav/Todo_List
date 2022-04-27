@@ -3,6 +3,8 @@ import { Manage_buttons } from "./manage_buttons";
 import { projects } from "./new_todo";
 
 const render_page = function (pj) {
+    if (!pj) return;
+
     const todos = document.querySelector(".todos");
     Helpers.purge_all_children(todos);
 

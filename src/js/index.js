@@ -1,11 +1,12 @@
 import "../css/todo.css";
 import { Todo, projects, create_todo } from "./new_todo";
 import { render_page } from "./render_page";
-import { manage_modal } from "./modal_popup";
+import { manage_modal, manage_form } from "./modal_popup";
 import { Helpers } from "./helpers";
 
 const init = (function () {
     manage_modal();
+    manage_form();
 
     Helpers.create_project("Project1", 1);
     Helpers.create_project("Project2", 2);

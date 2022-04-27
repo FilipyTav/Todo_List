@@ -11,16 +11,18 @@
     <body>
         <section class="menu">
             <div class="projects"></div>
-            <button data_open_modal>Open modal</button>
+            <div class="new_todo_btn">
+                <button data_open_modal>New todo</button>
+            </div>
         </section>
 
         <section class="todos"></section>
 
         <div id="modal_add_book">
-            <form action="" class="todo_inputs">
+            <form action="" id="todo_inputs">
                 <div class="input_container">
                     <label for="todo_title">Title</label>
-                    <input type="text" name="title" id="todo_title" />
+                    <input type="text" name="title" id="todo_title" required />
                 </div>
 
                 <div class="input_container">
@@ -28,15 +30,13 @@
                     <textarea
                         name="description"
                         id="todo_description"
-                        rows="2"
-                        cols="15"
                         maxlength="30"
                     ></textarea>
                 </div>
 
                 <div class="input_container">
                     <label for="todo_due">Due date</label>
-                    <input type="date" name="due_date" id="todo_due" />
+                    <input type="date" name="due_date" id="todo_due" required />
                 </div>
 
                 <div class="input_container priority">
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="submit_btn">
-                    <button type="button">Add todo</button>
+                    <button type="submit">Add todo</button>
                 </div>
             </form>
         </div>

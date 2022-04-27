@@ -1,15 +1,6 @@
 import { Helpers } from "./helpers";
 
-let projects = [
-    // {
-    //     name: "proj1",
-    //     todos: [],
-    // },
-    // {
-    //     name: "proj2",
-    //     todos: [],
-    // },
-];
+let projects = [];
 
 const Todo = function (title, description, due_date, priority) {
     const prototype = (function () {
