@@ -39,6 +39,8 @@ const render_page = function (pj) {
         });
     }
 
+    console.log(projects);
+
     Manage_buttons.projs();
 };
 

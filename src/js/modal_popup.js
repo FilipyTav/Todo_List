@@ -1,5 +1,7 @@
 import { Helpers } from "./helpers";
-import { format, parseISO, isBefore, isToday } from "date-fns";
+import { Todo } from "./new_todo";
+import { parseISO, isBefore, isToday } from "date-fns";
+import { render_page } from "./render_page";
 
 const manage_modal = function () {
     const open_modal_button = document.querySelector("[data_open_modal]");
@@ -31,6 +33,13 @@ const manage_modal = function () {
         modal.classList.remove("active");
         overlay.classList.remove("active");
     }
+
+    const submit_btn = document.querySelector(".submit_btn button");
+
+    submit_btn.addEventListener("click", () => {
+        const modal = document.querySelector("#modal_add_book");
+        close_modal(modal);
+    });
 };
 
 const manage_form = function () {
@@ -108,6 +117,11 @@ const manage_form = function () {
             alert("Invalid priority");
             return;
         }
+
+        const new_todo = Todo(title, description, due_date, priority);
+        new_todo.add_to("Project1");
+
+        render_page("Home");
     });
 };
 

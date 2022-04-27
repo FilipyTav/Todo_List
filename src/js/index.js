@@ -1,5 +1,5 @@
 import "../css/todo.css";
-import { Todo, projects, create_todo } from "./new_todo";
+import { Todo } from "./new_todo";
 import { render_page } from "./render_page";
 import { manage_modal, manage_form } from "./modal_popup";
 import { Helpers } from "./helpers";
@@ -20,6 +20,5 @@ const init = (function () {
     let c = Todo("c", "Very cool", "not now");
     c.add_to("Project2");
 
-    console.log(projects);
     render_page("Home");
 })();
