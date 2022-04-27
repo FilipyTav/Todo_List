@@ -1,5 +1,6 @@
 import { Helpers } from "./helpers";
 import { Manage_buttons } from "./manage_buttons";
+import { manage_modal } from "./modal_popup";
 import { projects } from "./new_todo";
 
 const render_page = function (pj) {
@@ -39,9 +40,19 @@ const render_page = function (pj) {
         });
     }
 
+    const new_todo_btn = Helpers.create_DOM("div", "new_todo_btn");
+    Helpers.add_to_DOM(todos, new_todo_btn, "last");
+
+    const actual_btn = Helpers.create_DOM("button");
+    actual_btn.setAttribute("data_open_modal", "");
+    actual_btn.textContent = "New todo";
+    Helpers.add_to_DOM(new_todo_btn, actual_btn, "first");
+
     console.log(projects);
 
     Manage_buttons.projs();
+
+    manage_modal();
 };
 
 export { render_page };

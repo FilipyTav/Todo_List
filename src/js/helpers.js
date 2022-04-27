@@ -98,22 +98,12 @@ const Helpers = (function () {
         };
     })();
 
-    const convert_to_n_digits = function (number, digits) {
-        if (!number || !digits) return;
-
-        return number.toLocaleString("en-US", {
-            minimumIntegerDigits: digits,
-            useGrouping: false,
-        });
-    };
-
     return {
         add_to_DOM,
         purge_all_children,
         create_DOM,
         create_todo,
         create_project,
-        convert_to_n_digits,
         Current_date,
     };
 })();
