@@ -143,7 +143,6 @@ label {
 
 .todo > .title {
     font-size: 1.3rem;
-    user-select: none;
 }
 
 .todo .remove_todo {

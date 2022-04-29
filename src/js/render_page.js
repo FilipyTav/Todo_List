@@ -101,23 +101,23 @@ const render_page = function (pj) {
         const due_date = button.querySelector(".due_date");
         const priority = button.querySelector(".priority");
 
-        button.addEventListener("mouseover", () => {
-            button.classList.add("expanded");
+        button.addEventListener("click", () => {
+            if (!button.classList.contains("expanded")) {
+                button.classList.add("expanded");
 
-            setTimeout(() => {
-                add_expaded_content(
-                    button,
-                    title,
-                    description,
-                    due_date,
-                    priority
-                );
-            }, 125);
-        });
+                setTimeout(() => {
+                    add_expaded_content(
+                        button,
+                        title,
+                        description,
+                        due_date,
+                        priority
+                    );
+                }, 125);
+                return;
+            }
 
-        button.addEventListener("mouseout", () => {
             button.classList.remove("expanded");
-
             setTimeout(() => {
                 remove_expaded_content(
                     button,
