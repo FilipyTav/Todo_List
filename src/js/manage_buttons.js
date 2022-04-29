@@ -12,8 +12,21 @@ const Manage_buttons = (function () {
         });
     };
 
+    const remove_todo = function () {
+        const rmv_btns = document.querySelectorAll(".remove_todo");
+
+        rmv_btns.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                const todo = e.target.closest(".todo");
+                const todo_project = todo.getAttribute("data_project");
+                const todo_id = parseInt(todo.getAttribute("id_in_project"));
+            });
+        });
+    };
+
     return {
         projs,
+        remove_todo,
     };
 })();
 

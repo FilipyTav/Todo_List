@@ -1,6 +1,6 @@
 import { Helpers } from "./helpers";
 import { Todo, projects } from "./new_todo";
-import { parseISO, isBefore, isToday } from "date-fns";
+import { parseISO, isBefore, isToday, sub } from "date-fns";
 import { render_page } from "./render_page";
 
 const manage_modal = function () {
@@ -37,8 +37,13 @@ const manage_modal = function () {
     const submit_btn = document.querySelector(".submit_btn button");
 
     submit_btn.addEventListener("click", () => {
-        const modal = document.querySelector("#modal_add_book");
-        close_modal(modal);
+        setTimeout(() => {
+            if (!!submit_btn.getAttribute("data_status")) {
+                const modal = document.querySelector("#modal_add_book");
+                close_modal(modal);
+                submit_btn.setAttribute("data_status", "");
+            }
+        }, 50);
     });
 };
 
@@ -120,6 +125,8 @@ const manage_form = function () {
 
         const new_todo = Todo(title, description, due_date, priority);
         new_todo.add_to("Today");
+
+        submit_btn.setAttribute("data_status", "true");
 
         form.reset();
 

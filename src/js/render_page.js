@@ -50,6 +50,7 @@ const render_page = function (pj = "All") {
     console.log(projects);
 
     Manage_buttons.projs();
+    Manage_buttons.remove_todo();
 
     manage_modal();
 
