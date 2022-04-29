@@ -1,5 +1,5 @@
 import { Helpers } from "./helpers";
-import { Todo } from "./new_todo";
+import { Todo, projects } from "./new_todo";
 import { parseISO, isBefore, isToday } from "date-fns";
 import { render_page } from "./render_page";
 
@@ -119,9 +119,11 @@ const manage_form = function () {
         }
 
         const new_todo = Todo(title, description, due_date, priority);
-        new_todo.add_to("Project1");
+        new_todo.add_to("Today");
 
-        render_page("Home");
+        form.reset();
+
+        render_page("All");
     });
 };
 

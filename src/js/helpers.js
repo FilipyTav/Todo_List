@@ -39,7 +39,7 @@ const Helpers = (function () {
         return element;
     };
 
-    const create_project = function (title, id) {
+    const create_project = function (title) {
         if (!title) return;
 
         const project = (function () {
@@ -52,13 +52,14 @@ const Helpers = (function () {
         projects.push(project);
     };
 
-    const create_todo = function (name, project) {
+    const create_todo = function (name, project, index) {
         if (!name) return;
 
         const all_todos = document.querySelector(".todos");
 
         const todo = Helpers.create_DOM("div", "todo");
         todo.setAttribute("data_project", project);
+        todo.setAttribute("id_in_project", index);
         Helpers.add_to_DOM(all_todos, todo, "last");
 
         const title = Helpers.create_DOM("div", "title");

@@ -10,6 +10,7 @@ const Todo = function (title, description, due_date, priority, project) {
                 if (proj.name === pj) {
                     if (!proj.todos.includes(this)) {
                         proj.todos.push(this);
+                        this.id = proj.todos.length - 1;
                     }
                 }
             });
