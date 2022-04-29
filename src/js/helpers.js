@@ -52,17 +52,30 @@ const Helpers = (function () {
         projects.push(project);
     };
 
-    const create_todo = function (name) {
+    const create_todo = function (name, project) {
         if (!name) return;
 
         const all_todos = document.querySelector(".todos");
 
         const todo = Helpers.create_DOM("div", "todo");
+        todo.setAttribute("data_project", project);
         Helpers.add_to_DOM(all_todos, todo, "last");
 
         const title = Helpers.create_DOM("div", "title");
         title.textContent = `${name}`;
         Helpers.add_to_DOM(todo, title, "first");
+
+        const description = Helpers.create_DOM("div", "description");
+        description.textContent = "";
+        Helpers.add_to_DOM(todo, description, "last");
+
+        const due_date = Helpers.create_DOM("div", "due_date");
+        due_date.textContent = "";
+        Helpers.add_to_DOM(todo, due_date, "last");
+
+        const priority = Helpers.create_DOM("div", "priority");
+        priority.textContent = "";
+        Helpers.add_to_DOM(todo, priority, "last");
 
         const options = Helpers.create_DOM("div", "options");
         Helpers.add_to_DOM(todo, options, "last");

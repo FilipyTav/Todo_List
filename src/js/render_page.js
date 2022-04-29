@@ -1,7 +1,7 @@
 import { Helpers } from "./helpers";
 import { Manage_buttons } from "./manage_buttons";
 import { manage_modal } from "./modal_popup";
-import { projects } from "./new_todo";
+import { projects, current_project } from "./new_todo";
 
 const render_page = function (pj) {
     if (!pj) return;
@@ -26,7 +26,7 @@ const render_page = function (pj) {
         projects.forEach((project) => {
             render_projects(project);
             project.todos.forEach((todo) => {
-                Helpers.create_todo(todo.title);
+                Helpers.create_todo(todo.title, project.name);
             });
         });
     } else {
@@ -35,7 +35,7 @@ const render_page = function (pj) {
             if (!(pj === project.name)) return;
 
             project.todos.forEach((todo) => {
-                Helpers.create_todo(todo.title);
+                Helpers.create_todo(todo.title, project.name);
             });
         });
     }
@@ -53,6 +53,82 @@ const render_page = function (pj) {
     Manage_buttons.projs();
 
     manage_modal();
+
+    const todo_item = document.querySelectorAll(".todo");
+
+    const add_expaded_content = function (
+        todo,
+        tl,
+        description,
+        due_date,
+        priority
+    ) {
+        todo.setAttribute("style", `flex-flow: column nowrap;`);
+
+        const pj = todo.getAttribute("data_project");
+
+        const project = projects.find(({ name }) => name === pj);
+        const this_todo = project.todos.find(
+            ({ title }) => title === tl.textContent
+        );
+
+        description.textContent = this_todo.description;
+
+        due_date.textContent = this_todo.due_date;
+
+        priority.textContent = this_todo.priority;
+    };
+
+    const remove_expaded_content = function (
+        todo,
+        tl,
+        description,
+        due_date,
+        priority
+    ) {
+        todo.removeAttribute("style");
+
+        description.textContent = "";
+
+        due_date.textContent = "";
+
+        priority.textContent = "";
+    };
+
+    todo_item.forEach((button) => {
+        const title = button.querySelector(".title");
+        const description = button.querySelector(".description");
+        const due_date = button.querySelector(".due_date");
+        const priority = button.querySelector(".priority");
+
+        button.addEventListener("mouseover", () => {
+            button.classList.add("expanded");
+
+            setTimeout(() => {
+                add_expaded_content(
+                    button,
+                    title,
+                    description,
+                    due_date,
+                    priority
+                );
+            }, 125);
+        });
+
+        button.addEventListener("mouseout", () => {
+            button.classList.remove("expanded");
+
+            setTimeout(() => {
+                remove_expaded_content(
+                    button,
+                    title,
+                    description,
+                    due_date,
+                    priority
+                );
+            }, 125);
+        });
+    });
 };
 
 export { render_page };
