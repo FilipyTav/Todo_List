@@ -6,7 +6,6 @@ const Todo = function (title, description, due_date, priority, project) {
     const prototype = (function () {
         const add_to = function (pj = project) {
             projects.forEach((proj, index) => {
-                proj.id = index;
                 if (proj.name === pj) {
                     if (!proj.todos.includes(this)) {
                         proj.todos.push(this);

@@ -191,9 +191,29 @@ label {
     padding: 10px 30px;
     border-top: 1px solid purple;
 
+    cursor: default;
+    position: relative;
+}
+
+.project > *,
+.project {
     font-size: 1.5rem;
     font-weight: normal;
-    cursor: default;
+}
+
+.rmv_pj {
+    height: auto;
+    font-size: 2rem;
+    background: none;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    transform: scale(0);
+    transition: transform 300ms ease-in;
+}
+
+.rmv_pj.active {
+    transform: scale(1);
 }
 
 .project:hover {

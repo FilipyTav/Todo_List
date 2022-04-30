@@ -10,6 +10,22 @@ const Manage_buttons = (function () {
             button.addEventListener("click", (e) => {
                 render_page(e.target.textContent);
             });
+
+            button.addEventListener("mouseover", (e) => {
+                if (button.querySelector(".rmv_pj")) {
+                    const rmv_pj_btns = button.querySelector(".rmv_pj");
+                    rmv_pj_btns.classList.add("active");
+                }
+                e.stopPropagation();
+            });
+
+            button.addEventListener("mouseout", (e) => {
+                if (button.querySelector(".rmv_pj")) {
+                    const rmv_pj_btns = button.querySelector(".rmv_pj");
+                    rmv_pj_btns.classList.remove("active");
+                }
+                e.stopPropagation();
+            });
         });
     };
 

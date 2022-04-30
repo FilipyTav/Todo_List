@@ -1,7 +1,7 @@
 import { Helpers } from "./helpers";
 import { Manage_buttons } from "./manage_buttons";
 import { manage_modal } from "./modal_popup";
-import { format, parse } from "date-fns";
+import { format } from "date-fns";
 import { projects } from "./new_todo";
 
 const render_page = function (pj = "All") {
@@ -17,12 +17,19 @@ const render_page = function (pj = "All") {
 
     const render_projects = function (p) {
         const proj = Helpers.create_DOM("button", "project");
-        proj.textContent = `${p.name}`;
+        const actual_proj = Helpers.create_DOM("div");
+        actual_proj.textContent = `${p.name}`;
+        Helpers.add_to_DOM(proj, actual_proj, "first");
         Helpers.add_to_DOM(projs, proj, "last");
+
+        const rmv_pj_btn = Helpers.create_DOM("button", "rmv_pj");
+        rmv_pj_btn.innerHTML = `&times;`;
+        Helpers.add_to_DOM(proj, rmv_pj_btn, "last");
     };
 
     if (pj === "All") {
-        projects.forEach((project) => {
+        projects.forEach((project, i) => {
+            project.id = i;
             render_projects(project);
             project.todos.forEach((todo, index) => {
                 Helpers.create_todo(todo.title, project.name, index);

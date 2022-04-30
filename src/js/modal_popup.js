@@ -1,6 +1,6 @@
 import { Helpers } from "./helpers";
 import { Todo, projects } from "./new_todo";
-import { parseISO, isBefore, isToday, sub } from "date-fns";
+import { parseISO, isBefore, isToday } from "date-fns";
 import { render_page } from "./render_page";
 
 const manage_modal = function () {
@@ -109,6 +109,11 @@ const manage_form = function () {
         const description = data.get("description").trim();
 
         let due_date = data.get("due_date");
+        if (!due_date) {
+            alert("Must have a due date");
+            return;
+        }
+
         due_date = parseISO(due_date);
 
         if (isBefore(due_date, today) && !isToday(due_date)) {
