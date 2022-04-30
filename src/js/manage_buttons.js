@@ -8,7 +8,12 @@ const Manage_buttons = (function () {
         buttons.forEach((button, index) => {
             button.setAttribute("data_id", index);
             button.addEventListener("click", (e) => {
-                render_page(e.target.textContent);
+                if (button.querySelector(".rmv_pj")) {
+                    render_page(button.querySelector("div").textContent);
+                    return;
+                }
+
+                render_page(button.textContent);
             });
 
             button.addEventListener("mouseover", (e) => {
@@ -53,10 +58,6 @@ const Manage_buttons = (function () {
                         : (td = td);
                 });
 
-                // const this_todo = this_project.todos.find(
-                //     ({ id }) => id === todo_id
-                // );
-
                 this_project.todos.splice(todo_id, 1);
                 this_project.todos.forEach((td, index) => {
                     in_same_pj[index].setAttribute("id_in_project", index);
@@ -66,9 +67,27 @@ const Manage_buttons = (function () {
         });
     };
 
+    const remove_project = function () {
+        const rmv_pj_btns = document.querySelectorAll(".rmv_pj");
+
+        rmv_pj_btns.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                const this_project = button.closest(".project");
+                const pj_id =
+                    parseInt(this_project.getAttribute("data_id")) - 1;
+
+                projects.splice(pj_id, 1);
+                setTimeout(() => {
+                    render_page("All");
+                }, 50);
+            });
+        });
+    };
+
     return {
         projs,
         remove_todo,
+        remove_project,
     };
 })();
 

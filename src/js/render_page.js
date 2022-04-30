@@ -137,6 +137,7 @@ const render_page = function (pj = "All") {
 
     Manage_buttons.projs();
     Manage_buttons.remove_todo();
+    Manage_buttons.remove_project();
 };
 
 export { render_page };
