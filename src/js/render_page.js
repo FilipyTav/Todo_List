@@ -49,9 +49,6 @@ const render_page = function (pj = "All") {
 
     console.log(projects);
 
-    Manage_buttons.projs();
-    Manage_buttons.remove_todo();
-
     manage_modal();
 
     const todo_item = document.querySelectorAll(".todo");
@@ -70,6 +67,8 @@ const render_page = function (pj = "All") {
 
         const project = projects.find(({ name }) => name === pj);
         const this_todo = project.todos.find(({ id }) => id === id_in_pj);
+
+        if (!this_todo) return;
 
         description.textContent = this_todo.description;
 
@@ -128,6 +127,9 @@ const render_page = function (pj = "All") {
             }, 125);
         });
     });
+
+    Manage_buttons.projs();
+    Manage_buttons.remove_todo();
 };
 
 export { render_page };
