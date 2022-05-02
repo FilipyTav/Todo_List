@@ -106,7 +106,8 @@ const render_page = function (pj = "All") {
         const due_date = button.querySelector(".due_date");
         const priority = button.querySelector(".priority");
 
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (e) => {
+            if (e.target !== button) return;
             if (!button.classList.contains("expanded")) {
                 button.classList.add("expanded");
 
