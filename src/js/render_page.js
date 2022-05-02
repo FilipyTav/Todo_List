@@ -15,6 +15,7 @@ const render_page = function (pj = "All") {
     all.textContent = "All";
     Helpers.add_to_DOM(projs, all, "first");
 
+    // TODO: the menu sidebar breaks if there are more than 10 projects
     const render_projects = function (p) {
         const proj = Helpers.create_DOM("button", "project");
         const actual_proj = Helpers.create_DOM("div");
@@ -27,6 +28,20 @@ const render_page = function (pj = "All") {
         Helpers.add_to_DOM(proj, rmv_pj_btn, "last");
     };
 
+    const render_new_pj_btn = function () {
+        const add_pj_btn = Helpers.create_DOM("button", "add_pj_btn");
+        add_pj_btn.textContent = "New project";
+        Helpers.add_to_DOM(projs, add_pj_btn, "last");
+
+        const input = Helpers.create_DOM("input", "new_pj_name");
+        input.setAttribute("type", "text");
+        Helpers.add_to_DOM(projs, input, "last");
+
+        const confirm = Helpers.create_DOM("button", "confirm_pj");
+        confirm.textContent = "OK";
+        Helpers.add_to_DOM(projs, confirm, "last");
+    };
+
     if (pj === "All") {
         projects.forEach((project, i) => {
             project.id = i;
@@ -35,6 +50,7 @@ const render_page = function (pj = "All") {
                 Helpers.create_todo(todo.title, project.name, index);
             });
         });
+        render_new_pj_btn();
     } else {
         projects.forEach((project) => {
             render_projects(project);
@@ -44,6 +60,7 @@ const render_page = function (pj = "All") {
                 Helpers.create_todo(todo.title, project.name, index);
             });
         });
+        render_new_pj_btn();
     }
 
     const new_todo_btn = Helpers.create_DOM("div", "new_todo_btn");
@@ -139,6 +156,7 @@ const render_page = function (pj = "All") {
     Manage_buttons.projs();
     Manage_buttons.remove_todo();
     Manage_buttons.remove_project();
+    Manage_buttons.new_pj();
 };
 
 export { render_page };

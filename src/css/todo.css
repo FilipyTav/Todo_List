@@ -178,11 +178,15 @@ label {
     flex-flow: column wrap;
     justify-content: center;
     gap: 20px;
+
+    overflow: auto;
 }
 
 .projects {
     display: flex;
     flex-flow: column wrap;
+
+    position: relative;
 }
 
 .project {
@@ -229,12 +233,87 @@ label {
     place-items: center;
 }
 
-.new_todo_btn button {
-    color: white;
-    background: purple;
+.new_todo_btn button,
+.add_pj_btn {
     padding: 10px 25px;
     font-size: 1rem;
     border-radius: 15px;
+}
+
+.new_todo_btn button {
+    color: white;
+    background: purple;
+}
+
+.add_pj_btn {
+    align-self: center;
+    margin-top: 30px;
+
+    background: rgb(204, 125, 228);
+    border: 2px solid rgb(247, 217, 247);
+    color: rgb(87, 0, 90);
+}
+
+.add_pj_btn:hover {
+    background: rgb(247, 217, 247);
+    color: rgb(204, 125, 228);
+}
+
+.new_pj_name {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: rgb(247, 217, 247);
+    font-size: 1rem;
+
+    position: absolute;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    bottom: -40px;
+
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 200ms ease-in-out, width 200ms ease-in-out;
+}
+
+.new_pj_name.active {
+    width: 200px;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.new_pj_name:hover {
+    background: rgb(253, 233, 253);
+}
+
+.confirm_pj {
+    align-self: flex-start;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: rgb(184, 43, 184);
+    color: rgb(247, 217, 247);
+
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    bottom: -40px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 500ms ease;
+}
+
+.confirm_pj.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.confirm_pj:hover {
+    background: rgb(155, 16, 155);
 }
 
 /* menu end */

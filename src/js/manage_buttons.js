@@ -1,3 +1,4 @@
+import { Helpers } from "./helpers";
 import { projects } from "./new_todo";
 import { render_page } from "./render_page";
 
@@ -29,7 +30,6 @@ const Manage_buttons = (function () {
                     const rmv_pj_btns = button.querySelector(".rmv_pj");
                     rmv_pj_btns.classList.remove("active");
                 }
-                e.stopPropagation();
             });
         });
     };
@@ -84,10 +84,36 @@ const Manage_buttons = (function () {
         });
     };
 
+    const new_pj = function () {
+        const new_pj_btn = document.querySelector(".add_pj_btn");
+        const confirm = document.querySelector(".confirm_pj");
+        const input = document.querySelector(".new_pj_name");
+
+        new_pj_btn.addEventListener("click", () => {
+            input.classList.toggle("active");
+            confirm.classList.toggle("active");
+        });
+
+        confirm.addEventListener("click", () => {
+            const new_name = input.value.trim();
+
+            if (!new_name) {
+                alert("Invalid name");
+                return;
+            }
+
+            if (projects.length >= 9) return;
+
+            Helpers.create_project(new_name);
+            render_page("All");
+        });
+    };
+
     return {
         projs,
         remove_todo,
         remove_project,
+        new_pj,
     };
 })();
 
