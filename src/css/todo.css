@@ -25,6 +25,14 @@ label {
     font-weight: bold;
 }
 
+input[type="text"] {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1rem;
+}
+
 /* modal and overlay start */
 
 #modal_add_book {
@@ -76,17 +84,25 @@ label {
 
 .input_container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 30px;
 }
 
 .input_container textarea {
     resize: none;
+    width: 100%;
+    height: 200px;
+    padding: 5px 10px;
 }
 
-.priority {
-    justify-content: flex-end;
+.input_container label,
+.input_container p {
+    user-select: none;
+}
+
+input[type="date"] {
+    padding: 2px 5px;
 }
 
 .priority button {
@@ -161,6 +177,10 @@ label {
 .due_date,
 .priority {
     font-weight: bold;
+}
+
+.description {
+    max-width: 100%;
 }
 
 /* todos container and items end */
@@ -260,12 +280,7 @@ label {
 }
 
 .new_pj_name {
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
     background: rgb(247, 217, 247);
-    font-size: 1rem;
 
     position: absolute;
     margin: 0 auto;
