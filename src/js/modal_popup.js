@@ -2,6 +2,7 @@ import { Helpers } from "./helpers";
 import { Todo, projects } from "./new_todo";
 import { parseISO, isBefore, isToday } from "date-fns";
 import { render_page } from "./render_page";
+import { Manage_buttons } from "./manage_buttons";
 
 const manage_modal = function () {
     const open_modal_button = document.querySelector("[data_open_modal]");
@@ -52,44 +53,16 @@ const manage_form = function () {
 
     const submit_btn = document.querySelector(".submit_btn button");
 
-    const create_priority = function (level, color) {
-        return {
-            level,
-            color,
-        };
-    };
-
-    const priorities = [
-        create_priority("Low", "#34ff34;"),
-        create_priority("Medium", "#ffff41"),
-        create_priority("High", "#ff3737"),
-    ];
-
     const priority_btn = document.querySelector("#priority_btn");
 
-    priority_btn.textContent = priorities[0].level;
-    priority_btn.setAttribute("style", `background: ${priorities[0].color}`);
+    priority_btn.textContent = Manage_buttons.Pr.priorities[0].level;
+    priority_btn.setAttribute(
+        "style",
+        `background: ${Manage_buttons.Pr.priorities[0].color}`
+    );
 
     priority_btn.addEventListener("click", () => {
-        for (let i = 0; i < priorities.length; i++) {
-            if (priority_btn.textContent === priorities[i].level) {
-                if (i === priorities.length - 1) {
-                    priority_btn.textContent = priorities[0].level;
-                    priority_btn.setAttribute(
-                        "style",
-                        `background: ${priorities[0].color}`
-                    );
-                    break;
-                }
-
-                priority_btn.textContent = priorities[i + 1].level;
-                priority_btn.setAttribute(
-                    "style",
-                    `background: ${priorities[i + 1].color}`
-                );
-                break;
-            }
-        }
+        Manage_buttons.Pr.activate_pr_btns(priority_btn);
     });
 
     submit_btn.addEventListener("click", (e) => {

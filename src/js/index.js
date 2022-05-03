@@ -8,7 +8,12 @@ const init = (function () {
     Helpers.create_project("Today");
     Helpers.create_project("Next week");
 
-    let a = Todo("a", "cool", new Date(), "medium");
+    let a = Todo(
+        "Stop procrastinating",
+        "Gotta be more productive",
+        new Date(),
+        "High"
+    );
     a.add_to("Today");
 
     let b = Todo("b", "dunno", new Date(2000, 1, 1), "Low");

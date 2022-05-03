@@ -74,16 +74,24 @@ const Helpers = (function () {
         due_date.textContent = "";
         Helpers.add_to_DOM(todo, due_date, "last");
 
-        const priority = Helpers.create_DOM("div", "priority");
-        priority.textContent = "";
-        Helpers.add_to_DOM(todo, priority, "last");
+        const priority_editable = Helpers.create_DOM("button", "priority_ed");
+        priority_editable.textContent = "";
+        Helpers.add_to_DOM(todo, priority_editable, "last");
 
         const options = Helpers.create_DOM("div", "options");
         Helpers.add_to_DOM(todo, options, "last");
 
+        const priority = Helpers.create_DOM("div", "priority");
+        priority.textContent = "";
+        Helpers.add_to_DOM(options, priority, "first");
+
         const rmv_btn = Helpers.create_DOM("button", "remove_todo");
         rmv_btn.innerHTML = "&times;";
         Helpers.add_to_DOM(options, rmv_btn, "last");
+
+        // priority.addEventListener("click", () => {
+        //     console.log(priority);
+        // });
     };
 
     const Current_date = (function () {

@@ -82,7 +82,8 @@ const render_page = function (pj = "All") {
         tl,
         description,
         due_date,
-        priority
+        priority,
+        this_priority
     ) {
         todo.setAttribute("style", `flex-flow: column nowrap;`);
 
@@ -99,6 +100,7 @@ const render_page = function (pj = "All") {
         due_date.textContent = format(this_todo.due_date, "yyyy/MM/dd");
 
         priority.textContent = this_todo.priority;
+        priority.setAttribute("style", `background: ${this_priority.color}`);
     };
 
     const remove_expaded_content = function (
@@ -122,8 +124,29 @@ const render_page = function (pj = "All") {
         const description = button.querySelector(".description");
         const due_date = button.querySelector(".due_date");
         const priority = button.querySelector(".priority");
+        const priority_ed = button.querySelector(".priority_ed");
+
+        const pj = button.getAttribute("data_project");
+        const id_in_pj = parseInt(button.getAttribute("id_in_project"));
+        const project = projects.find(({ name }) => name === pj);
+        const this_todo = project.todos.find(({ id }) => id === id_in_pj);
+
+        const this_priority = Manage_buttons.Pr.priorities.find(
+            ({ level }) => level === this_todo.priority
+        );
+
+        priority.setAttribute("style", `background: ${this_priority.color}`);
 
         button.addEventListener("click", (e) => {
+            const this_priority = Manage_buttons.Pr.priorities.find(
+                ({ level }) => level === this_todo.priority
+            );
+
+            priority.setAttribute(
+                "style",
+                `background: ${this_priority.color}`
+            );
+
             if (e.target !== button) return;
             if (!button.classList.contains("expanded")) {
                 button.classList.add("expanded");
@@ -134,7 +157,8 @@ const render_page = function (pj = "All") {
                         title,
                         description,
                         due_date,
-                        priority
+                        priority_ed,
+                        this_priority
                     );
                 }, 125);
                 return;
@@ -147,7 +171,7 @@ const render_page = function (pj = "All") {
                     title,
                     description,
                     due_date,
-                    priority
+                    priority_ed
                 );
             }, 125);
         });
@@ -157,6 +181,7 @@ const render_page = function (pj = "All") {
     Manage_buttons.remove_todo();
     Manage_buttons.remove_project();
     Manage_buttons.new_pj();
+    Manage_buttons.priority_editable();
 };
 
 export { render_page };

@@ -105,7 +105,7 @@ input[type="date"] {
     padding: 2px 5px;
 }
 
-.priority button {
+.input_priority button {
     width: 15%;
     text-align: center;
     border-radius: 20px;
@@ -181,6 +181,40 @@ input[type="date"] {
 
 .description {
     max-width: 100%;
+}
+
+.priority {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: default;
+}
+
+.todo.expanded .priority {
+    display: none;
+}
+
+.priority_ed {
+    cursor: default;
+    opacity: 0;
+
+    transition: opacity 700ms ease;
+}
+
+.todo.expanded .priority_ed {
+    opacity: 1;
+
+    width: 15%;
+    text-align: center;
+    border-radius: 20px;
+    cursor: default;
+
+    padding: 10px 30px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
 }
 
 /* todos container and items end */

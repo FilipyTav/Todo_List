@@ -109,11 +109,89 @@ const Manage_buttons = (function () {
         });
     };
 
+    const Pr = (function () {
+        const create_priority = function (level, color) {
+            return {
+                level,
+                color,
+            };
+        };
+
+        const priorities = [
+            create_priority("Low", "#34ff34;"),
+            create_priority("Medium", "#ffff41"),
+            create_priority("High", "#ff3737"),
+        ];
+
+        const activate_pr_btns = function (button) {
+            for (let i = 0; i < priorities.length; i++) {
+                if (button.textContent === priorities[i].level) {
+                    if (i === priorities.length - 1) {
+                        button.textContent = priorities[0].level;
+                        button.setAttribute(
+                            "style",
+                            `background: ${priorities[0].color}`
+                        );
+                        break;
+                    }
+
+                    button.textContent = priorities[i + 1].level;
+                    button.setAttribute(
+                        "style",
+                        `background: ${priorities[i + 1].color}`
+                    );
+                    break;
+                }
+            }
+        };
+
+        return {
+            activate_pr_btns,
+            priorities,
+        };
+    })();
+
+    const priority_editable = function () {
+        const prs = document.querySelectorAll(".priority_ed");
+
+        prs.forEach((button) => {
+            const todo = button.closest(".todo");
+            const project = todo.getAttribute("data_project");
+            const pr_opt = todo.querySelector(".priority");
+            const id_pj = parseInt(todo.getAttribute("id_in_project"));
+
+            button.addEventListener("click", () => {
+                Pr.activate_pr_btns(button);
+
+                const this_priority = Pr.priorities.find(
+                    ({ level }) => level === button.textContent
+                );
+
+                const this_project = projects.find(
+                    ({ name }) => name === project
+                );
+
+                const this_todo = this_project.todos.find(
+                    ({ id }) => id === id_pj
+                );
+
+                this_todo.priority = button.textContent;
+
+                pr_opt.setAttribute(
+                    "style",
+                    `background: ${this_priority.color}`
+                );
+            });
+        });
+    };
+
     return {
         projs,
         remove_todo,
         remove_project,
         new_pj,
+        Pr,
+        priority_editable,
     };
 })();
 
