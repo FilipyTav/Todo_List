@@ -89,9 +89,15 @@ const Helpers = (function () {
         rmv_btn.innerHTML = "&times;";
         Helpers.add_to_DOM(options, rmv_btn, "last");
 
-        // priority.addEventListener("click", () => {
-        //     console.log(priority);
-        // });
+        const progress = Helpers.create_DOM("input", "progress");
+        progress.setAttribute("type", "checkbox");
+        progress.setAttribute("id", `prgs${name}${index}${project}`);
+        Helpers.add_to_DOM(todo, progress, "first");
+
+        const label = Helpers.create_DOM("label", "progress_lbl");
+        label.setAttribute("for", `prgs${name}${index}${project}`);
+        label.textContent = "";
+        Helpers.add_to_DOM(todo, label, "first");
     };
 
     const Current_date = (function () {

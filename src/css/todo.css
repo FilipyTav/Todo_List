@@ -161,6 +161,18 @@ input[type="date"] {
     font-size: 1.3rem;
 }
 
+label.done {
+    background: #000;
+}
+
+.todo.done {
+    background: rgba(102, 51, 153, 0.4);
+}
+
+.todo.done > *:not(.options) {
+    text-decoration: line-through;
+}
+
 .todo .remove_todo {
     padding: 0 5px;
     background: none;
@@ -199,6 +211,27 @@ input[type="date"] {
     opacity: 0;
 
     transition: opacity 700ms ease;
+}
+
+.progress {
+    display: none;
+}
+
+.progress_lbl {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    user-select: none;
+
+    display: grid;
+    place-items: center;
+
+    background: #fff;
+}
+
+.todo.expanded .progress_lbl {
+    display: none;
 }
 
 .todo.expanded .priority_ed {

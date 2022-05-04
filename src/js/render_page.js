@@ -126,6 +126,9 @@ const render_page = function (pj = "All") {
         const priority = button.querySelector(".priority");
         const priority_ed = button.querySelector(".priority_ed");
 
+        const checkbox = button.querySelector(".progress");
+        const label = button.querySelector(".progress_lbl");
+
         const pj = button.getAttribute("data_project");
         const id_in_pj = parseInt(button.getAttribute("id_in_project"));
         const project = projects.find(({ name }) => name === pj);
@@ -175,6 +178,26 @@ const render_page = function (pj = "All") {
                 );
             }, 125);
         });
+
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked && this_todo.status !== "Done") {
+                label.classList.add("done");
+                button.classList.add("done");
+                label.textContent = "X";
+                this_todo.status = "Done";
+            } else {
+                button.classList.remove("done");
+                label.classList.remove("done");
+                label.textContent = "";
+                this_todo.status = "Yet to do";
+            }
+        });
+
+        if (this_todo.status === "Done") {
+            label.classList.add("done");
+            button.classList.add("done");
+            label.textContent = "X";
+        }
     });
 
     Manage_buttons.projs();
