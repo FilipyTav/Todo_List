@@ -169,7 +169,7 @@ label.done {
     background: rgba(102, 51, 153, 0.4);
 }
 
-.todo.done > *:not(.options) {
+.todo.done > *:not(.options, label) {
     text-decoration: line-through;
 }
 

@@ -1,7 +1,10 @@
-import { Todo, projects } from "./new_todo";
+import { projects } from "./new_todo";
 
+// General auxiliary functions used frequently
 const Helpers = (function () {
+    // Adds an element inside a parent as the first or last child
     const add_to_DOM = function (parent, child, placement) {
+        // Checks for invalid usage
         if (
             !(placement === "first" || placement === "last") ||
             !parent ||
@@ -16,6 +19,7 @@ const Helpers = (function () {
         }
     };
 
+    // Removes all the children from a parent element
     const purge_all_children = function (parent) {
         if (!parent) return;
 
@@ -24,6 +28,7 @@ const Helpers = (function () {
         }
     };
 
+    // Creates a DOM element and gives it some classes
     const create_DOM = function (type, ...classes) {
         if (!type) return;
 
@@ -39,9 +44,11 @@ const Helpers = (function () {
         return element;
     };
 
+    // Creates a project and adds it into the array
     const create_project = function (title) {
         if (!title) return;
 
+        // Each project has a name and a list of todos
         const project = (function () {
             return {
                 name: title,
@@ -52,15 +59,22 @@ const Helpers = (function () {
         projects.push(project);
     };
 
+    // Creates a todo DOM element and add it to the page
     const create_todo = function (name, project, index) {
         if (!name) return;
 
+        // The container for all todos
         const all_todos = document.querySelector(".todos");
 
+        // The todo element
         const todo = Helpers.create_DOM("div", "todo");
+
+        // Identifiers
         todo.setAttribute("data_project", project);
         todo.setAttribute("id_in_project", index);
         Helpers.add_to_DOM(all_todos, todo, "last");
+
+        // Initializes all the info and elements of the todo in the DOM
 
         const title = Helpers.create_DOM("div", "title");
         title.textContent = `${name}`;
@@ -100,6 +114,8 @@ const Helpers = (function () {
         Helpers.add_to_DOM(todo, label, "first");
     };
 
+    // Gets the info of the current day
+    // Should probably delete this one, but ill keep it, just in case
     const Current_date = (function () {
         const date = new Date();
 
