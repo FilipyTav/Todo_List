@@ -105,6 +105,10 @@ input[type="date"] {
     padding: 2px 5px;
 }
 
+.input_priority {
+    font-weight: bold;
+}
+
 .input_priority button {
     width: 15%;
     text-align: center;
