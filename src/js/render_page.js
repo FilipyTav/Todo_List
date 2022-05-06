@@ -1,6 +1,6 @@
 import { Helpers } from "./helpers";
 import { Manage_buttons } from "./manage_buttons";
-import { manage_modal } from "./modal_popup";
+import { manage_modal, manage_form } from "./modal_popup";
 import { format } from "date-fns";
 import { projects } from "./new_todo";
 
@@ -20,6 +20,10 @@ const render_page = function (pj = "All") {
     all.textContent = "All";
     Helpers.add_to_DOM(projs, all, "first");
 
+    // The input where the user selects which project a new todo sould go to
+    const add_to_pj = document.querySelector("#add_to_proj");
+    Helpers.purge_all_children(add_to_pj);
+
     // Function to render the projects buttons in the sidebar
     const render_projects = function (p) {
         // The project button and its name
@@ -33,6 +37,13 @@ const render_page = function (pj = "All") {
         const rmv_pj_btn = Helpers.create_DOM("button", "rmv_pj");
         rmv_pj_btn.innerHTML = `&times;`;
         Helpers.add_to_DOM(proj, rmv_pj_btn, "last");
+
+        // Adds an option to the dropdown based on the project
+        const pj = Helpers.create_DOM("option");
+        pj.setAttribute("value", p.name);
+        pj.textContent = p.name;
+
+        Helpers.add_to_DOM(add_to_pj, pj, "last");
     };
 
     // Adds the new pj btn to the page
@@ -95,8 +106,6 @@ const render_page = function (pj = "All") {
     actual_btn.setAttribute("data_open_modal", "");
     actual_btn.textContent = "New todo";
     Helpers.add_to_DOM(new_todo_btn, actual_btn, "first");
-
-    manage_modal();
 
     // All the todos on the page
     const todo_item = document.querySelectorAll(".todo");
@@ -252,6 +261,9 @@ const render_page = function (pj = "All") {
             label.textContent = "X";
         }
     });
+
+    // Functionality for the modal
+    manage_modal();
 
     // Adds the functionality to a variety of buttons on the page
     Manage_buttons.projs();

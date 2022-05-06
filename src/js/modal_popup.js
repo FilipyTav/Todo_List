@@ -1,5 +1,5 @@
 import { Helpers } from "./helpers";
-import { Todo, projects } from "./new_todo";
+import { Todo } from "./new_todo";
 import { parseISO, isBefore, isToday } from "date-fns";
 import { render_page } from "./render_page";
 import { Manage_buttons } from "./manage_buttons";
@@ -120,18 +120,20 @@ const manage_form = function () {
             return;
         }
 
+        // The project the todo should go to
+        const pj = data.get("pj");
+
         // Creates a new todo obj based on the input values
         const new_todo = Todo(title, description, due_date, priority);
 
         // Add to the project
-        // TODO: MAke it so the user can choose to which project add the todo
-        new_todo.add_to("Today");
+        new_todo.add_to(pj);
 
         submit_btn.setAttribute("data_status", "true");
 
         form.reset();
 
-        render_page("All");
+        render_page(pj);
     });
 };
 
