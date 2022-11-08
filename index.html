@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./main.js" defer></script>
+        <title>Todo List</title>
+    </head>
+
+    <body>
+        <section class="menu">
+            <div class="projects"></div>
+        </section>
+
+        <section class="todos"></section>
+
+        <div id="modal_add_book">
+            <form action="" id="todo_inputs">
+                <div class="input_container">
+                    <label for="todo_title">Title</label>
+                    <input type="text" name="title" id="todo_title" required />
+                </div>
+
+                <div class="input_container">
+                    <textarea
+                        name="description"
+                        id="todo_description"
+                        placeholder="Description"
+                        maxlength="200"
+                    ></textarea>
+                </div>
+
+                <div class="input_container">
+                    <label for="todo_due">Due date</label>
+                    <input type="date" name="due_date" id="todo_due" required />
+                </div>
+
+                <div class="input_container input_priority">
+                    <p>Priority</p>
+                    <button type="button" id="priority_btn"></button>
+                </div>
+
+                <div class="input_container">
+                    <label for="add_to_proj">Project</label>
+                    <select name="pj" id="add_to_proj"></select>
+                </div>
+
+                <div class="submit_btn">
+                    <button type="submit">Add todo</button>
+                </div>
+            </form>
+        </div>
+        <div id="overlay"></div>
+    </body>
+</html>
